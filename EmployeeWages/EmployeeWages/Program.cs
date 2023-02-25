@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-           EmployeePayRoll.EmployeeAttendance();
-            
+         int emp =   EmployeePayRoll.EmployeeDailyWage();
+            Console.WriteLine(emp);
         }
     }
 }
