@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-         int emp =   EmployeePayRoll.MonthlyWage();
+         int emp =   EmployeePayRoll.MonthlyWageBasedOnCondition();
             Console.WriteLine(emp);
         }
     }

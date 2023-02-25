@@ -12,9 +12,8 @@ namespace EmployeeWages
         public const int IS_FULL_TIME = 8;
         public const int IS_PART_TIME = 4;
         public const int WORKINGDAYPERMONTH = 20;
-        //public const int FULL_DAY_PERHR = 8;
-        //public const int PART_TIME_HRS = 4;
-
+        public const int WORKING_HRS_IN_MONTH = 100;
+        
         public static int EmployeeAttendance()
         {
            Random random = new Random();
@@ -51,6 +50,31 @@ namespace EmployeeWages
             }
             return totalEmpWage;
 
+        }
+
+        public static int MonthlyWageBasedOnCondition()
+        {
+            int totalEmpWage = 0;
+            int totalEmpHrs = 0;
+            int totalDays = 0;
+
+            while (totalEmpHrs < WORKING_HRS_IN_MONTH && totalDays < WORKINGDAYPERMONTH)
+            {
+                totalDays++;
+                int dailyWage = EmployeeDailyWage();
+                if (dailyWage == 160)
+                {
+                    totalEmpHrs = 8;
+                }
+                else 
+                {
+                    totalEmpHrs = 4;
+                }
+                totalEmpWage += dailyWage;
+                Console.WriteLine(totalDays + " " + totalEmpHrs);
+            }
+            return totalEmpWage;
+        
         }
 
      }
