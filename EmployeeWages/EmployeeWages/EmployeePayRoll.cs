@@ -8,74 +8,42 @@ namespace EmployeeWages
 {
     internal class EmployeePayRoll
     {
-        public const int WAGEPERHRS = 20;
-        public const int IS_FULL_TIME = 8;
-        public const int IS_PART_TIME = 4;
-        public const int WORKINGDAYPERMONTH = 20;
-        public const int WORKING_HRS_IN_MONTH = 100;
-        
-        public static int EmployeeAttendance()
-        {
-           Random random = new Random();
-           int check = random.Next(0 , 3);
-           return check;
-        }
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
 
-        public static int EmployeeDailyWage()
-        {
-            int EmpHrs = 0;
-            int check = EmployeeAttendance();
-            switch (check) 
-            {
-                case 0:
-                    EmpHrs = 0;
-                    break;
-                case 1: 
-                    EmpHrs = 8;
-                    break;
-                case 2:
-                    EmpHrs = 4;
-                    break;
-            }
-            int daliyWage = EmpHrs * WAGEPERHRS;
-            return daliyWage;
-        }
+      public static int ComputeEmployeeWages(string company, int empRatePerHr, int numberOfWorkingDay, int maxHrsPerMonth)
+      {
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
+        int empHrs = 0;
 
-        public static int MonthlyWage()
-        {
-            int totalEmpWage = 0;
-            for (int i = 1; i <= WORKINGDAYPERMONTH; i++)
-            {
-                totalEmpWage += EmployeeDailyWage();
-            }
-            return totalEmpWage;
-
-        }
-
-        public static int MonthlyWageBasedOnCondition()
-        {
-            int totalEmpWage = 0;
-            int totalEmpHrs = 0;
-            int totalDays = 0;
-
-            while (totalEmpHrs < WORKING_HRS_IN_MONTH && totalDays < WORKINGDAYPERMONTH)
-            {
-                totalDays++;
-                int dailyWage = EmployeeDailyWage();
-                if (dailyWage == 160)
+            while (totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numberOfWorkingDay)
+            { 
+                totalWorkingDays++;
+                Random random = new Random();
+                int check = random.Next(0, 3);
+                switch (check)
                 {
-                    totalEmpHrs = 8;
+                    case 0:
+                        empHrs = 0;
+                        break;
+                    case 1:
+                        empHrs = 8;
+                        break;
+                    case 2:
+                        empHrs = 4;
+                        break;
                 }
-                else 
-                {
-                    totalEmpHrs = 4;
-                }
-                totalEmpWage += dailyWage;
-                Console.WriteLine(totalDays + " " + totalEmpHrs);
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Days:" + totalWorkingDays + "emp hrs" + empHrs);
             }
+             int totalEmpWage = totalEmpHrs * empRatePerHr;
+            Console.WriteLine("total emp wage for company: " + company + "is:" + totalEmpWage);
             return totalEmpWage;
-        
-        }
-
      }
+        
+                    
+    }
+
+    
 }

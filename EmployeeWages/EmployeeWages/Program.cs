@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-         EmployeePayRoll.MonthlyWageBasedOnCondition();
+         EmployeePayRoll.ComputeEmployeeWages("Dmart", 20, 2, 10);
+            EmployeePayRoll.ComputeEmployeeWages("Reliance", 10, 4, 20);
           
         }
     }
